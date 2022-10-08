@@ -5,22 +5,22 @@ import java.util.Objects;
 
 public class Reservation {
 
-    private  Customer customer;
+    private  final Customer customer;
 
-    private  IRoomInterface room;
+    private final IRoom room;
 
-    private Date checkinInDate;
+    private final Date checkinInDate;
 
-    private  Date checkoutDate;
+    private  final Date checkoutDate;
 
-    public Reservation( Customer _customer, IRoomInterface _room, Date _checkinDate, Date _checkoutDate){
+    public Reservation(Customer _customer, IRoom _room, Date _checkinDate, Date _checkoutDate){
         customer = _customer;
         room = _room;
         checkinInDate = _checkinDate;
         checkoutDate = _checkoutDate;
     }
 
-    public IRoomInterface getRoom() {
+    public IRoom getRoom() {
         return room;
     }
 
@@ -32,9 +32,11 @@ public class Reservation {
         return checkinInDate;
     }
 
-    public Date getCheckoutDate() {
+    public  Date getCheckoutDate() {
         return checkoutDate;
     }
+
+    String getCustomerLastName() { return customer.getLastName();}
 
     @Override
     public String toString() {

@@ -1,7 +1,7 @@
 package api;
 
 import model.Customer;
-import model.IRoomInterface;
+import model.IRoom;
 import model.Room;
 import model.RoomType;
 
@@ -79,7 +79,7 @@ public class AdminMenu {
     }
 
     private void seeAllRooms(){
-        Collection<IRoomInterface> allRooms = adminResource.getAllRooms();
+        Collection<IRoom> allRooms = adminResource.getAllRooms();
         if(allRooms.isEmpty()){
             System.out.println(" This is a Roomless hotel: Admin must add rooms");
         }
@@ -88,7 +88,7 @@ public class AdminMenu {
         }
     }
     private void addRoom() {
-        List<IRoomInterface> rooms = new ArrayList<>();
+        List<IRoom> rooms = new ArrayList<>();
 
         int inputtedRoomNum = 0;
         String roomNum = new String();
@@ -162,7 +162,7 @@ public class AdminMenu {
             System.out.println(" Type of room entered is invalid");
         }
         // add room
-        IRoomInterface newRoom = new Room(roomNum, roomPrice, roomType);
+        IRoom newRoom = new Room(roomNum, roomPrice, roomType);
         rooms.add(newRoom); // add to local array
         adminResource.addRoom(rooms); //return the array of added rooms
 

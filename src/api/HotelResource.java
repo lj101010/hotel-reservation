@@ -2,15 +2,13 @@ package api;
 
 
 import model.Customer;
-import model.IRoomInterface;
+import model.IRoom;
 import model.Reservation;
 import service.CustomerService;
 import service.ReservationService;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.Queue;
-import java.util.Set;
 
 public final class HotelResource {
 
@@ -38,17 +36,16 @@ public final class HotelResource {
 
     }
 
-    public IRoomInterface getARoom( String roomNumber){
+    public IRoom getARoom(String roomNumber){
 
         return reservationService.getARoom(roomNumber);
 
     }
 
-    public Reservation bookARoom( String customerEmail, IRoomInterface room,
+    public Reservation bookARoom( Customer customer, IRoom room,
                                   Date checkinInDate, Date checkOutDate) {
 
-        return reservationService.reserveARoom(getCustomer(customerEmail),
-                room, checkinInDate,checkOutDate);
+        return reservationService.reserveARoom( customer, room, checkinInDate,checkOutDate);
 
     }
 
@@ -57,10 +54,14 @@ public final class HotelResource {
         return reservationService.getCustomersReservation(getCustomer(customerEmail));
     }
 
-    public Collection<IRoomInterface> findARoom(Date checkInDate, Date checkOutDate){
+    public Collection<IRoom> findARoom(Date checkInDate, Date checkOutDate){
 
         return reservationService.findRooms(checkInDate, checkOutDate);
 
+    }
+
+    public Date searchNewDate(Date date){
+        return reservationService.searchNewDate(date);
     }
 
 

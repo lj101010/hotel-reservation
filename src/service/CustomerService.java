@@ -35,7 +35,8 @@ public final class CustomerService {
     public Customer getCustomer( String customerEmail) {
 
         if(!mapOfCustomers.containsKey(customerEmail)){
-            throw new RuntimeException("Need to create an account");
+            System.out.println(" This email does not correlate with a customer ");
+            return null;
 
         }else {
             return mapOfCustomers.get(customerEmail);

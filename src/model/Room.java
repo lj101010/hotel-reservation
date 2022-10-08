@@ -2,7 +2,7 @@ package model;
 
 import java.util.Objects;
 
-public class Room  implements IRoomInterface{
+public class Room  implements IRoom {
 
     private final String roomNumber;
     private final Double roomPrice;

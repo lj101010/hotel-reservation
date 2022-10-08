@@ -1,9 +1,7 @@
 package api;
 
 import model.Customer;
-import model.IRoomInterface;
-import model.Reservation;
-import model.Room;
+import model.IRoom;
 import service.CustomerService;
 import service.ReservationService;
 
@@ -30,14 +28,14 @@ public final class AdminResource {
 
     }
 
-    public void addRoom(List<IRoomInterface> rooms) {
+    public void addRoom(List<IRoom> rooms) {
 
-        for( IRoomInterface i: rooms)
+        for( IRoom i: rooms)
             reservationService.addRoom(i);
 
     }
 
-    public Collection <IRoomInterface> getAllRooms(){
+    public Collection <IRoom> getAllRooms(){
 
         return reservationService.getAllRooms();
     }
@@ -52,7 +50,7 @@ public final class AdminResource {
 
     public boolean doesRoomExist( String roomNumber){
 
-        IRoomInterface room = reservationService.getARoom( roomNumber);
+        IRoom room = reservationService.getARoom( roomNumber);
 
         if (null != room) {
             return true;
